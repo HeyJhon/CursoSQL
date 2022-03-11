@@ -1,6 +1,6 @@
 USE [InventarioDB]
 GO
-/****** Object:  Table [dbo].[Articulo]    Script Date: 04/03/2022 01:08:40 p. m. ******/
+/****** Object:  Table [dbo].[Articulo]    Script Date: 10/03/2022 06:51:52 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -17,7 +17,7 @@ CREATE TABLE [dbo].[Articulo](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Categoria]    Script Date: 04/03/2022 01:08:40 p. m. ******/
+/****** Object:  Table [dbo].[Categoria]    Script Date: 10/03/2022 06:51:52 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -31,13 +31,13 @@ CREATE TABLE [dbo].[Categoria](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Cliente]    Script Date: 04/03/2022 01:08:40 p. m. ******/
+/****** Object:  Table [dbo].[Cliente]    Script Date: 10/03/2022 06:51:52 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Cliente](
-	[IdCliente] [int] NOT NULL,
+	[IdCliente] [int] IDENTITY(1,1) NOT NULL,
 	[Nombre] [nvarchar](50) NOT NULL,
 	[Direccion] [nvarchar](50) NULL,
 	[Telefono] [nvarchar](50) NULL,
@@ -47,26 +47,30 @@ CREATE TABLE [dbo].[Cliente](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[DetalleVenta]    Script Date: 04/03/2022 01:08:40 p. m. ******/
+/****** Object:  Table [dbo].[DetalleVenta]    Script Date: 10/03/2022 06:51:52 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[DetalleVenta](
-	[IdDetalleVenta] [int] NULL,
-	[IdArticulo] [int] NULL,
-	[Cantidad] [int] NULL,
-	[Precio] [decimal](18, 2) NULL,
-	[IdVenta] [int] NULL
+	[IdDetalleVenta] [int] IDENTITY(1,1) NOT NULL,
+	[IdArticulo] [int] NOT NULL,
+	[Cantidad] [int] NOT NULL,
+	[Precio] [decimal](18, 2) NOT NULL,
+	[IdVenta] [int] NOT NULL,
+ CONSTRAINT [PK_DetalleVenta] PRIMARY KEY CLUSTERED 
+(
+	[IdDetalleVenta] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Vendedor]    Script Date: 04/03/2022 01:08:40 p. m. ******/
+/****** Object:  Table [dbo].[Vendedor]    Script Date: 10/03/2022 06:51:52 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Vendedor](
-	[IdVendedor] [int] NOT NULL,
+	[IdVendedor] [int] IDENTITY(1,1) NOT NULL,
 	[Nombre] [nvarchar](50) NOT NULL,
 	[Direccion] [nvarchar](50) NOT NULL,
 	[Telefono] [nvarchar](50) NOT NULL,
@@ -77,13 +81,13 @@ CREATE TABLE [dbo].[Vendedor](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Venta]    Script Date: 04/03/2022 01:08:40 p. m. ******/
+/****** Object:  Table [dbo].[Venta]    Script Date: 10/03/2022 06:51:52 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Venta](
-	[IdVenta] [int] NOT NULL,
+	[IdVenta] [int] IDENTITY(1,1) NOT NULL,
 	[Fecha] [datetime] NOT NULL,
 	[IdCliente] [int] NOT NULL,
 	[IdVendedor] [int] NOT NULL,

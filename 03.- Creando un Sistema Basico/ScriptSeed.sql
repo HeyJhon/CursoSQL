@@ -35,5 +35,11 @@ INSERT INTO Cliente VALUES('Pedro Gomez', 'Calle 2 Norte #250', '553452334590')
 
 --VENDEDOR
 SELECT * FROM Vendedor
-INSERT INTO Vendedor VALUES('Juan Perez','Av. Universidad #300 Col. Centro', '553423556677')
-INSERT INTO Vendedor VALUES('María Sanchez','Calle 10 Oriente #45 Col. Sarabia', '552369778848')
+INSERT INTO Vendedor VALUES('Juan Perez','Av. Universidad #300 Col. Centro', '553423556677','juanperez@yahoo.com.mx')
+INSERT INTO Vendedor VALUES('María Sanchez','Calle 10 Oriente #45 Col. Sarabia', '552369778848','maria1990@hotmail.com')
+
+--VENTA
+SELECT * FROM Venta
+
+--DETALLE VENTA
+SELECT * FROM DetalleVenta
