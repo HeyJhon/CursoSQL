@@ -28,7 +28,8 @@ BEGIN
 				DECLARE @Importe DECIMAL(18,2)
 				SET @Importe = @Cantidad * @Precio
 				UPDATE Venta SET Total = Total + @Importe
-
+				WHERE IdVenta = @IdVenta
+				
 				UPDATE Articulo SET Stock = Stock - @Cantidad 
 				WHERE IdArticulo = @IdArticulo
 
